@@ -2,6 +2,12 @@
 @transition-speed: 0.5s;
 @btn-color: #fff;
 
+.pos(@top, @left, @right) {
+    top: @top;
+    left: @left;
+    right: @right;
+  }
+
 body {
     font-family: sans-serif;
 }
@@ -10,13 +16,11 @@ body {
     font-size: 24px;
     cursor: pointer;
     position: fixed;
-    top: 10px;
-    left: 10px;
+    .pos(10px, 10px, 0px);
     z-index: 1001;
     color: @btn-color;
 }
 
-/* Ховаємо кнопку "☰", коли меню відкрито */
 #menu-toggle:checked ~ .menu-btn {
     display: none;
 }
@@ -27,8 +31,7 @@ body {
 
 .offcanvas {
     position: fixed;
-    top: 0;
-    left: -@menu-width; // Ховаємо меню
+    .pos(0, -@menu-width, 0);
     width: @menu-width;
     height: 100%;
     background: #333;
@@ -44,22 +47,18 @@ body {
     }
 }
 
-/* Кнопка "✖" (за замовчуванням схована) */
 .close-btn {
     font-size: 24px;
     cursor: pointer;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    .pos(10px, 160px, 10px);
     display: none;
 }
 
-/* Показуємо "✖", коли меню відкрите */
 #menu-toggle:checked ~ .offcanvas .close-btn {
     display: block;
 }
 
-/* Показуємо меню, якщо чекбокс активний */
 #menu-toggle:checked ~ .offcanvas {
     left: 0;
 }
